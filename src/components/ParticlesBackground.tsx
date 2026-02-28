@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "tsparticles-slim";
+import { loadSlim } from "@tsparticles/slim";
 
 export default function ParticlesBackground() {
   const [init, setInit] = useState(false);
@@ -74,7 +74,6 @@ export default function ParticlesBackground() {
           number: {
             density: {
               enable: true,
-              area: 800,
             },
             value: 80,
           },
