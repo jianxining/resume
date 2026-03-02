@@ -53,7 +53,7 @@ export default function Projects() {
       style={{ backgroundColor: "var(--color-bg-paper)" }}
       ref={ref}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="content-wrap">
         {/* Header */}
         <motion.div
           className="mb-14"
@@ -74,7 +74,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
-              className="rounded-2xl p-6 md:p-8 transition-all duration-240"
+              className="rounded-2xl card-pad transition-all duration-240"
               style={{
                 backgroundColor: "var(--color-bg-card)",
                 border: "1px solid var(--color-border)",

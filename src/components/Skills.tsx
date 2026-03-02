@@ -33,7 +33,7 @@ export default function Skills() {
       style={{ backgroundColor: "var(--color-bg-soft)" }}
       ref={ref}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="content-wrap">
         {/* Header */}
         <motion.div
           className="mb-14"

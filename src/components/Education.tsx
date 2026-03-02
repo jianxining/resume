@@ -32,7 +32,7 @@ export default function Education() {
       style={{ backgroundColor: "var(--color-bg-paper)" }}
       ref={ref}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="content-wrap">
         {/* Header */}
         <motion.div
           className="mb-14"
@@ -53,7 +53,7 @@ export default function Education() {
           {educations.map((edu, index) => (
             <motion.div
               key={edu.school}
-              className="rounded-2xl p-6 md:p-8"
+              className="rounded-2xl card-pad"
               style={{
                 backgroundColor: "var(--color-bg-card)",
                 border: "1px solid var(--color-border)",

@@ -120,6 +120,11 @@ body {
   transform: translateY(-2px);
 }
 
+/* Card padding utility */
+.card-pad {
+  padding: clamp(20px, 3vw, 36px);
+}
+
 /* Button styles */
 .btn-primary {
   background-color: var(--color-ink);
@@ -185,21 +190,20 @@ body {
   color: var(--color-accent-blue);
 }
 
-/* Section spacing */
+/* Section spacing — fluid, no breakpoints needed */
 .section {
-  padding: 64px 24px;
+  padding: clamp(48px, 7vw, 96px) clamp(20px, 5.5vw, 80px);
 }
 
-@media (min-width: 768px) {
-  .section {
-    padding: 80px 40px;
-  }
+/* Content containers — fluid max-width */
+.content-wrap {
+  width: min(880px, 100%);
+  margin-inline: auto;
 }
 
-@media (min-width: 1024px) {
-  .section {
-    padding: 96px 64px;
-  }
+.content-wrap-wide {
+  width: min(1060px, 100%);
+  margin-inline: auto;
 }
 
 /* Typography */

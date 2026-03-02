@@ -32,7 +32,7 @@ export default function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
+      <div className="content-wrap-wide px-6 flex items-center justify-between">
         <a
           href="#"
           className="text-base font-semibold tracking-wide"
