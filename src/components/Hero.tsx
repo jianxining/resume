@@ -22,7 +22,7 @@ export default function Hero() {
         >
           <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg">
             <Image
-              src="/source/avator.jpeg"
+              src="/avator.jpeg"
               alt="陶孟春"
               width={160}
               height={160}
