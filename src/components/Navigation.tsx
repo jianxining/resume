@@ -35,7 +35,7 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold gradient-text">
+        <a href="#" className="text-xl font-semibold text-[#1A1A1A]">
           陶孟春
         </a>
 
@@ -45,17 +45,17 @@ export default function Navigation() {
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-400 hover:text-white transition-colors relative group"
+              className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors relative group"
             >
               {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#C46849] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-400 hover:text-white transition-colors"
+          className="md:hidden text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -65,7 +65,7 @@ export default function Navigation() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
-          className="md:hidden glass mt-2 mx-4 rounded-xl p-4"
+          className="md:hidden mt-2 mx-4 rounded-xl p-4 bg-white/90 backdrop-blur-md border border-black/[0.08] shadow-sm"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
@@ -74,7 +74,7 @@ export default function Navigation() {
             <a
               key={item.name}
               href={item.href}
-              className="block py-2 text-gray-400 hover:text-white transition-colors"
+              className="block py-2 text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.name}

@@ -27,7 +27,7 @@ export default function Education() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section id="education" className="py-20 md:py-28 lg:py-32 px-6 md:px-12 lg:px-16 bg-[#F5F4F2]" ref={ref}>
+    <section id="education" className="section bg-[#F5F4F2]" ref={ref}>
       <div className="max-w-3xl mx-auto">
         <motion.div
           className="mb-12 md:mb-16"
@@ -35,9 +35,7 @@ export default function Education() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#1A1A1A] mb-4">
-            教育背景
-          </h2>
+          <h2 className="text-title text-[#1A1A1A] mb-4">教育背景</h2>
           <p className="text-lg text-[#6B6B6B]">扎实的技术基础，持续的学习能力</p>
         </motion.div>
 

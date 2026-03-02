@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const skills = [
-  { name: "Java/Python", level: 90 },
-  { name: "微服务架构", level: 85 },
-  { name: "Redis/MySQL", level: 85 },
-  { name: "RAG/Prompt Engineering", level: 80 },
-  { name: "AI辅助开发(Vibe Coding)", level: 90 },
+const coreSkills = [
+  "Java / Python",
+  "微服务架构",
+  "RAG / Prompt Engineering",
+  "AI辅助开发 (Vibe Coding)",
+  "高并发系统设计",
 ];
 
 const techStack = [
@@ -39,31 +39,25 @@ export default function Skills() {
           <p className="text-body max-w-2xl">全栈开发能力，专注Agent系统与后端架构</p>
         </motion.div>
 
-        {/* Skill bars */}
-        <div className="grid sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              className="bg-white rounded-xl p-4 md:p-5 border border-black/[0.08]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.05, duration: 0.4 }}
+        {/* Core skills tag cloud */}
+        <motion.div
+          className="flex flex-wrap gap-3 mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          {coreSkills.map((skill, index) => (
+            <motion.span
+              key={skill}
+              className="tag tag-accent px-4 py-2 text-sm md:text-base"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: index * 0.07, duration: 0.3 }}
             >
-              <div className="flex justify-between mb-2">
-                <span className="font-medium text-[#1A1A1A] text-sm md:text-base">{skill.name}</span>
-                <span className="text-[#6B6B6B] text-sm">{skill.level}%</span>
-              </div>
-              <div className="h-2 bg-[#EFEDEA] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-[#C46849] rounded-full"
-                  initial={{ width: 0 }}
-                  animate={isInView ? { width: `${skill.level}%` } : {}}
-                  transition={{ delay: index * 0.05 + 0.2, duration: 0.8, ease: "easeOut" }}
-                />
-              </div>
-            </motion.div>
+              {skill}
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
 
         {/* Tech Stack Grid */}
         <motion.div

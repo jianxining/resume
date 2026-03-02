@@ -1,10 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowDown } from "lucide-react";
 
 export default function Hero() {
+  const [toastMsg, setToastMsg] = useState("");
+
+  const copyToClipboard = (text: string, label: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setToastMsg(`已复制 ${label} ✓`);
+      setTimeout(() => setToastMsg(""), 2000);
+    });
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center px-6 relative bg-[#FAF9F7]">
       <motion.div
@@ -74,11 +84,19 @@ export default function Hero() {
             <MapPin size={14} />
             合肥 / 北京
           </span>
-          <span className="flex items-center gap-2">
+          <span
+            className="flex items-center gap-2 cursor-pointer hover:text-[#C46849] transition-colors"
+            title="点击复制"
+            onClick={() => copyToClipboard("tmengchun@163.com", "邮箱")}
+          >
             <Mail size={14} />
             tmengchun@163.com
           </span>
-          <span className="flex items-center gap-2">
+          <span
+            className="flex items-center gap-2 cursor-pointer hover:text-[#C46849] transition-colors"
+            title="点击复制"
+            onClick={() => copyToClipboard("17730113847", "电话")}
+          >
             <Phone size={14} />
             177-3011-3847
           </span>
@@ -120,6 +138,9 @@ export default function Hero() {
           <ArrowDown size={20} className="text-[#9B9B9B]" />
         </motion.div>
       </motion.div>
+
+      {/* Copy toast */}
+      {toastMsg && <div className="toast">{toastMsg}</div>}
     </section>
   );
 }
