@@ -1,107 +1,134 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Star } from "lucide-react";
 
 const projects = [
   {
-    title: "美团C端智能体 - 小美",
-    description: "参与美团C端智能体小美的Central Agent能力架构设计与核心功能开发，聚焦工具链建设、RAG系统优化及智能体交互体验提升",
+    index: "01",
+    title: "美团 C 端智能体 · 小美",
+    summary: "参与美团 C 端 Central Agent 核心能力架构设计与功能开发，覆盖地址理解、订单搜索、智能推送三条用户高频链路。",
     highlights: [
-      "外卖/闪购场景下的用户地址选择模块：通过新增指代地址转具体地址Tool，对接美团地址中台，构建地址标签映射将模糊意图转化为标准地址坐标",
-      "从0到1搭建订单搜索Agent：设计实时在线、全量离线双链路数据同步架构，构建高效的订单RAG检索基座",
-      "多级重试与规则过滤兜底策略：针对模型幻觉或检索真空期设计容错机制，推动订单搜工具可用一分率从基线跃升至95%",
-      "多Agent角色与小美营销工程实现：新增Agent角色配置，构建独立的Agent对话场域，实现基于配置系统的角色动态切换和不同角色Prompt、记忆隔离",
+      "地址选择模块：多级 RAG + 指代解析 Tool，将模糊意图转化为精确地址坐标",
+      "订单搜索 Agent：实时在线 + 全量离线双链路架构，多角色协作，工具可用率达 95%",
+      "营销通知系统：LLM 动态生成个性化推送文案，高并发稳定运行",
     ],
-    tech: ["React", "TypeScript", "Prompt Engineering", "RAG", "Agent设计"],
+    tags: ["Prompt Engineering", "RAG", "Multi-Agent", "LLM"],
     featured: true,
   },
   {
+    index: "02",
     title: "Hidream.ai 内容社区平台",
-    description: "基于DDD领域驱动设计的微服务化内容社区平台，承接上游模型生产内容，负责内容完整生命周期管理和百万级用户的社交互动场景",
+    summary: "基于 DDD 架构设计微服务化内容社区，承接模型生产内容，支撑百万级用户社交互动场景。",
     highlights: [
-      "参与设计和优化社区系统中的核心关系表，支撑用户互动、内容关联等多种社交场景，支持正反向查询和核心关系表缓存化，接口响应时长优化到50ms",
-      "设计并实现了基于消息队列的社区通知系统，支持点赞、评论、关注等多种社交互动通知",
-      "采用工厂模式和策略模式设计通知处理器，实现了不同通知类型的统一管理",
+      "核心关系表分库分表 + 缓存化，接口响应优化至 50ms",
+      "消息队列驱动异步通知系统，策略模式统一管理多类型通知",
+      "动态 / 评论 / 点赞完整社交链路",
     ],
-    tech: ["Java", "Spring Boot", "MySQL", "Redis", "Kafka", "DDD"],
+    tags: ["DDD", "微服务", "Kafka", "Redis", "PostgreSQL"],
     featured: true,
   },
   {
+    index: "03",
     title: "团购到家",
-    description: "完整的电商团购系统，支持微信扫码登录、支付宝支付、订单超时取消、秒杀等高并发场景",
+    summary: "完整电商团购系统，支持微信扫码登录、支付宝支付及高并发秒杀场景。",
     highlights: [
-      "支持微信扫码进行登录鉴权，集成支付宝沙箱支付系统，通过异步通知与主动查询双机制保障支付状态一致性",
-      "采用分片扫描 + 延迟消息触发超时查询 + 异步队列缓冲的优化方案，实现超时取消订单业务和主动查询功能",
-      "基于乐观锁保障普通订单并发安全，通过Redis分布式锁实现限购业务控制，结合缓存预热与消息队列支撑秒杀场景高并发处理",
+      "分片扫描 + 延迟消息双机制，保障订单超时取消一致性",
+      "Redis 分布式锁实现限购控制，结合缓存预热支撑秒杀高并发",
+      "乐观锁 + 异步队列保障普通订单并发安全",
     ],
-    tech: ["Java", "Spring Boot", "Redis", "RocketMQ", "MySQL"],
+    tags: ["Java", "Spring Boot", "Redis", "RocketMQ"],
     featured: false,
   },
 ];
 
 export default function Projects() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="projects" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+    <section
+      id="projects"
+      className="section"
+      style={{ backgroundColor: "var(--color-bg-paper)" }}
+      ref={ref}
+    >
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
         <motion.div
-          className="mb-12 md:mb-16"
+          className="mb-14"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-title text-[#1A1A1A] mb-3">项目经历</h2>
-          <p className="text-body max-w-2xl">企业级项目实战与技术落地</p>
+          <p className="text-label mb-3" style={{ color: "var(--color-accent)" }}>
+            02 — Works
+          </p>
+          <h2 className="text-title" style={{ color: "var(--color-ink)" }}>
+            代表作品
+          </h2>
         </motion.div>
 
-        <div className="space-y-6 md:space-y-8">
+        {/* Projects */}
+        <div className="space-y-8">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
-              className="bg-white rounded-xl border border-black/[0.08] p-5 sm:p-6 md:p-8 transition-all duration-200 hover:border-black/[0.15] hover:shadow-lg hover:shadow-black/[0.04]"
-              initial={{ opacity: 0, y: 20 }}
+              className="rounded-2xl p-6 md:p-8 transition-all duration-240"
+              style={{
+                backgroundColor: "var(--color-bg-card)",
+                border: "1px solid var(--color-border)",
+              }}
+              initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(100, 70, 40, 0.1)" }}
             >
-              {/* Header */}
-              <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A1A]">{project.title}</h3>
-                  {project.featured && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#C46849]/10 text-[#C46849] rounded-full text-xs font-medium">
-                      <Star size={10} />
-                      精选
-                    </span>
-                  )}
-                </div>
+              {/* Index + title row */}
+              <div className="flex items-baseline gap-4 mb-3">
+                <span
+                  className="text-4xl font-bold leading-none flex-shrink-0"
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    color: "var(--color-border-strong)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {project.index}
+                </span>
+                <h3
+                  className="text-lg font-semibold"
+                  style={{ fontFamily: "var(--font-serif)", color: "var(--color-ink)" }}
+                >
+                  {project.title}
+                </h3>
               </div>
 
-              {/* Description */}
-              <p className="text-[#6B6B6B] text-sm sm:text-base leading-relaxed mb-5">{project.description}</p>
+              {/* Summary */}
+              <p className="text-body mb-5 pl-14">{project.summary}</p>
 
               {/* Highlights */}
-              <ul className="space-y-2.5 mb-6">
-                {project.highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-[#1A1A1A]">
-                    <span className="w-1 h-1 rounded-full bg-[#C46849] mt-2 flex-shrink-0"></span>
-                    <span className="leading-relaxed">{h}</span>
+              <ul className="space-y-2.5 mb-6 pl-14">
+                {project.highlights.map((h) => (
+                  <li
+                    key={h}
+                    className="flex gap-3 text-sm leading-relaxed"
+                    style={{ color: "var(--color-ink-muted)" }}
+                  >
+                    <span
+                      className="mt-2 w-1 h-1 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: "var(--color-accent)" }}
+                    />
+                    {h}
                   </li>
                 ))}
               </ul>
 
-              {/* Tech Tags */}
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="px-3 py-1 bg-[#F5F4F2] text-[#6B6B6B] rounded-full text-xs sm:text-sm font-medium"
-                  >
-                    {t}
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 pl-14">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
                   </span>
                 ))}
               </div>

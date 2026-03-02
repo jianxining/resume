@@ -5,12 +5,10 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "首页", href: "#" },
-  { name: "技能", href: "#skills" },
-  { name: "经历", href: "#experience" },
-  { name: "项目", href: "#projects" },
-  { name: "教育", href: "#education" },
-  { name: "联系", href: "#contact" },
+  { name: "实践经历", href: "#experience" },
+  { name: "代表作品", href: "#projects" },
+  { name: "能力图谱", href: "#skills" },
+  { name: "学术背景", href: "#education" },
 ];
 
 export default function Navigation() {
@@ -28,14 +26,18 @@ export default function Navigation() {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass py-3" : "py-6"
+        isScrolled ? "glass py-3" : "py-5"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="text-xl font-semibold text-[#1A1A1A]">
+      <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
+        <a
+          href="#"
+          className="text-base font-semibold tracking-wide"
+          style={{ fontFamily: "var(--font-serif)", color: "var(--color-ink)" }}
+        >
           陶孟春
         </a>
 
@@ -45,27 +47,39 @@ export default function Navigation() {
             <a
               key={item.name}
               href={item.href}
-              className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors relative group"
+              className="text-label relative group transition-colors duration-200"
+              style={{ color: "var(--color-ink-faint)" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-faint)")}
             >
               {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#C46849] transition-all duration-300 group-hover:w-full" />
+              <span
+                className="absolute -bottom-0.5 left-0 w-0 h-px transition-all duration-300 group-hover:w-full"
+                style={{ backgroundColor: "var(--color-accent)" }}
+              />
             </a>
           ))}
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors"
+          className="md:hidden transition-colors"
+          style={{ color: "var(--color-ink-muted)" }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
-          className="md:hidden mt-2 mx-4 rounded-xl p-4 bg-white/90 backdrop-blur-md border border-black/[0.08] shadow-sm"
+          className="md:hidden mt-2 mx-4 rounded-xl p-5"
+          style={{
+            backgroundColor: "rgba(245, 239, 224, 0.95)",
+            backdropFilter: "blur(14px)",
+            border: "1px solid var(--color-border)",
+          }}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
@@ -74,7 +88,8 @@ export default function Navigation() {
             <a
               key={item.name}
               href={item.href}
-              className="block py-2 text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors"
+              className="block py-2.5 text-label transition-colors"
+              style={{ color: "var(--color-ink-muted)" }}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.name}

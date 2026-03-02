@@ -1,28 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Claude Code 风格配色 - 浅色主题 */
-  --color-bg-primary: #FAF9F7;
-  --color-bg-secondary: #F5F4F2;
-  --color-bg-tertiary: #EFEDEA;
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #6B6B6B;
-  --color-text-tertiary: #9B9B9B;
-  --color-accent: #C46849;
-  --color-accent-hover: #A8573D;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-border-strong: rgba(0, 0, 0, 0.15);
-  --color-card-bg: #FFFFFF;
+  /* 暖褐色系 - Gallery Atelier 风格 */
+  --color-bg-paper:    #F5EFE0;
+  --color-bg-soft:     #EDE5D2;
+  --color-bg-card:     rgba(251, 246, 237, 0.92);
+  --color-ink:         #1F1913;
+  --color-ink-muted:   #4F453C;
+  --color-ink-faint:   #8C7B6E;
+  --color-border:      rgba(180, 160, 130, 0.35);
+  --color-border-strong: rgba(180, 160, 130, 0.6);
+  --color-accent:      #8A3F33;
+  --color-accent-hover:#6E3228;
+  --color-accent-blue: #374F73;
+
+  /* 兼容旧变量名（逐步迁移） */
+  --color-bg-primary:   var(--color-bg-paper);
+  --color-bg-secondary: var(--color-bg-soft);
+  --color-text-primary:   var(--color-ink);
+  --color-text-secondary: var(--color-ink-muted);
+  --color-text-tertiary:  var(--color-ink-faint);
 
   /* 字体 */
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-serif, "Noto Serif SC"), STSong, serif;
+  --font-serif: var(--font-serif, "Noto Serif SC"), STSong, "Songti SC", serif;
   --font-mono: "SF Mono", Monaco, Consolas, monospace;
 }
 
 @theme inline {
-  --color-background: var(--color-bg-primary);
-  --color-foreground: var(--color-text-primary);
+  --color-background: var(--color-bg-paper);
+  --color-foreground: var(--color-ink);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-mono);
 }
@@ -38,25 +45,34 @@ html {
 }
 
 body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  background-color: var(--color-bg-paper);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* 超低透明度纸张纹理 */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 24px,
+      rgba(160, 130, 90, 0.04) 24px,
+      rgba(160, 130, 90, 0.04) 25px
+    );
 }
 
 /* Selection Color */
 ::selection {
-  background-color: rgba(196, 104, 73, 0.2);
-  color: var(--color-text-primary);
+  background-color: rgba(138, 63, 51, 0.18);
+  color: var(--color-ink);
 }
 
-/* Custom scrollbar - minimal */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -64,12 +80,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(140, 110, 80, 0.25);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(140, 110, 80, 0.4);
 }
 
 /* Accent text */
@@ -77,78 +93,52 @@ body {
   color: var(--color-accent);
 }
 
-/* Glass effect - light theme */
+/* Glass effect - warm paper */
 .glass {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background-color: rgba(255, 255, 255, 0.85);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(245, 239, 224, 0.88);
+  border-bottom: 1px solid rgba(180, 160, 130, 0.25);
 }
 
-/* Gradient text - light theme (no gradient, stays clean) */
+/* Gradient text */
 .gradient-text {
-  color: var(--color-text-primary);
+  color: var(--color-ink);
 }
 
-/* Toast notification */
-.toast {
-  position: fixed;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--color-text-primary);
-  color: var(--color-bg-primary);
-  padding: 10px 20px;
-  border-radius: 100px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  z-index: 9999;
-  pointer-events: none;
-  animation: toastFadeIn 0.2s ease forwards;
-}
-
-@keyframes toastFadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-/* Card style - clean and minimal */
+/* Card style */
 .card {
-  background: var(--color-card-bg);
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  transition: all 0.2s ease;
+  transition: all 0.24s ease;
 }
 
 .card:hover {
   border-color: var(--color-border-strong);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 24px rgba(100, 70, 40, 0.08);
+  transform: translateY(-2px);
 }
 
 /* Button styles */
 .btn-primary {
-  background-color: var(--color-text-primary);
-  color: var(--color-bg-primary);
-  padding: 12px 24px;
+  background-color: var(--color-ink);
+  color: var(--color-bg-paper);
+  padding: 12px 28px;
   border-radius: 8px;
   font-weight: 500;
   transition: all 0.2s ease;
+  letter-spacing: 0.02em;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-text-secondary);
+  background-color: var(--color-ink-muted);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--color-text-primary);
-  padding: 12px 24px;
+  color: var(--color-ink);
+  padding: 12px 28px;
   border-radius: 8px;
   border: 1px solid var(--color-border-strong);
   font-weight: 500;
@@ -156,13 +146,13 @@ body {
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-text-primary);
+  border-color: var(--color-ink);
 }
 
 .btn-accent {
   background-color: var(--color-accent);
-  color: white;
-  padding: 12px 24px;
+  color: #FBF6ED;
+  padding: 12px 28px;
   border-radius: 8px;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -177,16 +167,22 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 4px 12px;
-  background-color: var(--color-bg-secondary);
+  background-color: rgba(180, 160, 130, 0.15);
   border-radius: 100px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--color-ink-muted);
+  letter-spacing: 0.04em;
 }
 
 .tag-accent {
-  background-color: rgba(196, 104, 73, 0.1);
+  background-color: rgba(138, 63, 51, 0.1);
   color: var(--color-accent);
+}
+
+.tag-blue {
+  background-color: rgba(55, 79, 115, 0.1);
+  color: var(--color-accent-blue);
 }
 
 /* Section spacing */
@@ -208,9 +204,9 @@ body {
 
 /* Typography */
 .text-display {
-  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: -0.01em;
   font-family: var(--font-serif);
 }
@@ -224,21 +220,31 @@ body {
 }
 
 .text-subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.375rem);
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.01em;
 }
 
 .text-body {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
 }
 
 .text-small {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
-  color: var(--color-text-tertiary);
+  color: var(--color-ink-faint);
+}
+
+.text-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
 }
 
 /* Link underline animation */
@@ -254,7 +260,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: currentColor;
+  background-color: var(--color-accent);
   transition: width 0.3s ease;
 }
 
@@ -272,7 +278,7 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -284,9 +290,38 @@ body {
   animation: fadeInUp 0.6s ease forwards;
 }
 
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-ink);
+  color: var(--color-bg-paper);
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  z-index: 9999;
+  pointer-events: none;
+  letter-spacing: 0.04em;
+  animation: toastFadeIn 0.2s ease forwards;
+}
+
+@keyframes toastFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* Focus states */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 3px;
 }
