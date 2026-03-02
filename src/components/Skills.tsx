@@ -6,19 +6,19 @@ import { useRef } from "react";
 const capabilities = [
   {
     category: "Agent 开发",
-    items: ["Prompt Engineering", "RAG 检索优化", "Tool Calling", "Multi-Agent 协作", "LLM 应用开发"],
+    items: ["Multi-Agent 系统设计", "RAG 检索优化", "Prompt Engineering"],
   },
   {
     category: "后端工程",
-    items: ["Java", "Python", "Spring Boot", "微服务架构", "DDD", "高并发系统设计"],
+    items: ["微服务架构", "高并发系统", "DDD 领域驱动"],
   },
   {
-    category: "数据与存储",
-    items: ["MySQL", "PostgreSQL", "Redis", "MongoDB", "Kafka", "Elasticsearch"],
+    category: "技术栈",
+    items: ["Java · Python", "Spring Boot · FastAPI", "Redis · Kafka"],
   },
   {
-    category: "工程实践",
-    items: ["AI 辅助开发", "Docker", "CI/CD", "系统拆分与治理", "快速原型迭代"],
+    category: "工程方法",
+    items: ["AI 辅助开发", "快速原型迭代", "系统拆分与治理"],
   },
 ];
 
@@ -49,26 +49,26 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        {/* Capability rows — mi-chow style */}
+        {/* Rows */}
         <div>
           {capabilities.map((group, index) => (
             <motion.div
               key={group.category}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.07, duration: 0.45 }}
+              transition={{ delay: index * 0.08, duration: 0.5 }}
               style={{ borderTop: "1px solid var(--color-border)" }}
             >
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "clamp(80px, 18%, 160px) 1fr",
-                  gap: "clamp(20px, 4vw, 56px)",
-                  padding: "clamp(18px, 2.5vw, 26px) 0",
-                  alignItems: "baseline",
+                  gridTemplateColumns: "clamp(76px, 16%, 140px) 1fr",
+                  gap: "clamp(24px, 5vw, 64px)",
+                  padding: "clamp(22px, 3vw, 36px) 0",
+                  alignItems: "center",
                 }}
               >
-                {/* Left: category label */}
+                {/* Left: small label */}
                 <span
                   className="text-label"
                   style={{ color: "var(--color-ink-faint)" }}
@@ -76,16 +76,18 @@ export default function Skills() {
                   {group.category}
                 </span>
 
-                {/* Right: items joined by · */}
+                {/* Right: serif italic, joined by em-dash spaced */}
                 <p
                   style={{
-                    color: "var(--color-ink-muted)",
-                    fontSize: "clamp(0.8125rem, 1.2vw, 0.9375rem)",
-                    lineHeight: 1.7,
+                    fontFamily: "var(--font-serif)",
+                    fontStyle: "italic",
+                    fontSize: "clamp(0.9375rem, 1.4vw, 1.125rem)",
+                    color: "var(--color-ink)",
                     letterSpacing: "0.01em",
+                    lineHeight: 1.5,
                   }}
                 >
-                  {group.items.join(" · ")}
+                  {group.items.join("  ·  ")}
                 </p>
               </div>
             </motion.div>
