@@ -9,7 +9,6 @@ const skills = [
   { name: "微服务架构", level: 85 },
   { name: "Redis/MySQL", level: 85 },
   { name: "RAG/Prompt Engineering", level: 80 },
-  { name: "React/Vue", level: 75 },
   { name: "AI辅助开发(Vibe Coding)", level: 90 },
 ];
 
@@ -19,7 +18,6 @@ const techStack = [
   { category: "数据库", items: ["MySQL", "PostgreSQL", "Redis", "MongoDB"] },
   { category: "中间件", items: ["Kafka", "RabbitMQ", "Elasticsearch"] },
   { category: "微服务", items: ["DDD", "微服务拆分", "服务治理", "容器化"] },
-  { category: "前端技术", items: ["React", "Vue", "TypeScript", "Tailwind CSS"] },
   { category: "DevOps", items: ["Git", "Docker", "CI/CD", "Linux"] },
   { category: "AI工具", items: ["LLM应用开发", "AI辅助编程", "自动化评测"] },
 ];
