@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowDown } from "lucide-react";
+import avatorImg from "../../public/avator.jpeg";
 
 export default function Hero() {
   const [toastMsg, setToastMsg] = useState("");
@@ -32,7 +33,7 @@ export default function Hero() {
         >
           <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg">
             <Image
-              src="/avator.jpeg"
+              src={avatorImg}
               alt="陶孟春"
               width={160}
               height={160}
