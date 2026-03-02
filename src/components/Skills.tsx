@@ -3,28 +3,28 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const coreSkills = [
-  "Java / Python",
-  "微服务架构",
-  "RAG / Prompt Engineering",
-  "AI 辅助开发 (Vibe Coding)",
-  "高并发系统设计",
-  "Multi-Agent 协作",
-];
-
-const techStack = [
-  { category: "后端开发", items: ["Java", "Python", "Spring Boot", "FastAPI"] },
-  { category: "Agent 开发", items: ["Prompt Engineering", "RAG", "Tool Calling", "多 Agent 协作"] },
-  { category: "数据库", items: ["MySQL", "PostgreSQL", "Redis", "MongoDB"] },
-  { category: "中间件", items: ["Kafka", "RabbitMQ", "Elasticsearch"] },
-  { category: "微服务", items: ["DDD", "微服务拆分", "服务治理", "容器化"] },
-  { category: "DevOps", items: ["Git", "Docker", "CI/CD", "Linux"] },
-  { category: "AI 工具", items: ["LLM 应用开发", "AI 辅助编程", "自动化评测"] },
+const capabilities = [
+  {
+    category: "Agent 开发",
+    items: ["Prompt Engineering", "RAG 检索优化", "Tool Calling", "Multi-Agent 协作", "LLM 应用开发"],
+  },
+  {
+    category: "后端工程",
+    items: ["Java · Python", "Spring Boot · FastAPI", "微服务 · DDD", "高并发系统设计"],
+  },
+  {
+    category: "数据与存储",
+    items: ["MySQL · PostgreSQL", "Redis · MongoDB", "Kafka · Elasticsearch"],
+  },
+  {
+    category: "工程实践",
+    items: ["AI 辅助开发", "Docker · CI/CD", "系统拆分与治理", "快速原型迭代"],
+  },
 ];
 
 export default function Skills() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <section
@@ -36,7 +36,7 @@ export default function Skills() {
       <div className="content-wrap">
         {/* Header */}
         <motion.div
-          className="mb-14"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
@@ -49,62 +49,45 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        {/* Core skills */}
-        <motion.div
-          className="flex flex-wrap gap-3 mb-14"
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          {coreSkills.map((skill, index) => (
-            <motion.span
-              key={skill}
-              className="tag tag-accent px-4 py-2 text-sm"
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.1 + index * 0.07, duration: 0.3 }}
-            >
-              {skill}
-            </motion.span>
-          ))}
-        </motion.div>
-
-        {/* Tech stack grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          {techStack.map((group, index) => (
+        {/* Two-column capability list */}
+        <div className="space-y-0">
+          {capabilities.map((group, index) => (
             <motion.div
               key={group.category}
-              className="rounded-xl p-5 transition-all duration-240"
-              style={{
-                backgroundColor: "var(--color-bg-card)",
-                border: "1px solid var(--color-border)",
-              }}
+              className="flex flex-col sm:flex-row gap-4 sm:gap-12 py-7"
+              style={{ borderTop: "1px solid var(--color-border)" }}
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.35 + index * 0.05, duration: 0.4 }}
-              whileHover={{ borderColor: "var(--color-border-strong)" }}
+              transition={{ delay: index * 0.08, duration: 0.5 }}
             >
-              <h3
-                className="text-label mb-3"
-                style={{ color: "var(--color-accent)" }}
-              >
-                {group.category}
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
+              {/* Left: category */}
+              <div className="sm:w-36 flex-shrink-0">
+                <span
+                  className="text-label"
+                  style={{ color: "var(--color-ink-faint)" }}
+                >
+                  {group.category}
+                </span>
+              </div>
+
+              {/* Right: items */}
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
                 {group.items.map((item) => (
-                  <span key={item} className="tag text-xs">
+                  <span
+                    key={item}
+                    className="text-body"
+                    style={{ color: "var(--color-ink-muted)" }}
+                  >
                     {item}
                   </span>
                 ))}
               </div>
             </motion.div>
           ))}
-        </motion.div>
+
+          {/* Bottom border */}
+          <div style={{ borderTop: "1px solid var(--color-border)" }} />
+        </div>
       </div>
     </section>
   );
