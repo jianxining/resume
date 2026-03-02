@@ -5,23 +5,23 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const skills = [
-  { name: "React", level: 95, color: "from-cyan-400 to-blue-500" },
-  { name: "TypeScript", level: 90, color: "from-blue-400 to-indigo-500" },
-  { name: "Next.js", level: 85, color: "from-gray-400 to-gray-600" },
-  { name: "Vue.js", level: 80, color: "from-green-400 to-emerald-500" },
-  { name: "Node.js", level: 75, color: "from-green-500 to-green-700" },
-  { name: "Tailwind CSS", level: 90, color: "from-cyan-400 to-teal-500" },
+  { name: "Java/Python", level: 90, color: "from-orange-400 to-red-500" },
+  { name: "微服务架构", level: 85, color: "from-blue-400 to-indigo-500" },
+  { name: "Redis/MySQL", level: 85, color: "from-cyan-400 to-blue-500" },
+  { name: "RAG/Prompt Engineering", level: 80, color: "from-purple-400 to-pink-500" },
+  { name: "React/Vue", level: 75, color: "from-green-400 to-emerald-500" },
+  { name: "AI辅助开发(Vibe Coding)", level: 90, color: "from-indigo-400 to-purple-500" },
 ];
 
 const techStack = [
-  { category: "前端框架", items: ["React", "Vue 3", "Next.js", "Nuxt.js"] },
-  { category: "语言", items: ["TypeScript", "JavaScript", "HTML5", "CSS3"] },
-  { category: "状态管理", items: ["Redux", "Zustand", "Pinia", "MobX"] },
-  { category: "构建工具", items: ["Webpack", "Vite", "Rollup", "esbuild"] },
-  { category: "UI 框架", items: ["Ant Design", "Tailwind CSS", "shadcn/ui", "Material UI"] },
-  { category: "可视化", items: ["ECharts", "D3.js", "Three.js", "Canvas"] },
-  { category: "后端/数据库", items: ["Node.js", "Express", "PostgreSQL", "MongoDB"] },
-  { category: "工程化", items: ["Git", "Docker", "CI/CD", "Jest"] },
+  { category: "后端开发", items: ["Java", "Python", "Spring Boot", "FastAPI"] },
+  { category: "Agent开发", items: ["Prompt Engineering", "RAG", "Tool Calling", "多Agent协作"] },
+  { category: "数据库", items: ["MySQL", "PostgreSQL", "Redis", "MongoDB"] },
+  { category: "中间件", items: ["Kafka", "RabbitMQ", "Elasticsearch"] },
+  { category: "微服务", items: ["DDD", "微服务拆分", "服务治理", "容器化"] },
+  { category: "前端技术", items: ["React", "Vue", "TypeScript", "Tailwind CSS"] },
+  { category: "DevOps", items: ["Git", "Docker", "CI/CD", "Linux"] },
+  { category: "AI工具", items: ["LLM应用开发", "AI辅助编程", "自动化评测"] },
 ];
 
 export default function Skills() {
@@ -40,7 +40,7 @@ export default function Skills() {
           <h2 className="text-4xl font-bold mb-4">
             <span className="gradient-text">专业技能</span>
           </h2>
-          <p className="text-gray-400">4 年前端开发积累的技术栈</p>
+          <p className="text-gray-400">全栈开发能力，专注Agent系统与后端架构</p>
         </motion.div>
 
         {/* Skill bars */}

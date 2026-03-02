@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { Github, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -45,17 +45,26 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          <span className="typing-effect">前端开发工程师</span>
+          <span className="typing-effect">软件开发工程师</span>
           <span className="cursor text-indigo-400">|</span>
         </motion.div>
 
         <motion.p
-          className="text-lg text-gray-500 max-w-2xl mx-auto mb-8"
+          className="text-lg text-gray-500 max-w-2xl mx-auto mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          4年前端开发经验 | React & TypeScript 专家 | 高性能 Web 应用构建者
+          中国科学技术大学硕士在读 | Agent开发 & 后端开发 | AI辅助开发实践者
+        </motion.p>
+
+        <motion.p
+          className="text-sm text-gray-600 max-w-2xl mx-auto mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+        >
+          2002年1月 · 安徽省合肥市 · 可实习6个月
         </motion.p>
 
         <motion.div
@@ -64,17 +73,17 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
         >
-          <a href="mailto:taomengchun@email.com" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
+          <a href="mailto:tmengchun@163.com" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
             <Mail size={18} />
-            <span>taomengchun@email.com</span>
+            <span>tmengchun@163.com</span>
           </a>
-          <a href="tel:18612345678" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
+          <a href="tel:17730113847" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
             <Phone size={18} />
-            <span>186-1234-5678</span>
+            <span>177-3011-3847</span>
           </a>
           <span className="flex items-center gap-2">
             <MapPin size={18} />
-            <span>北京</span>
+            <span>合肥 / 北京</span>
           </span>
         </motion.div>
 

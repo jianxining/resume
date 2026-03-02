@@ -3,61 +3,44 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Star } from "lucide-react";
+import { ExternalLink, Star } from "lucide-react";
 
 const projects = [
   {
-    title: "AI 智能问答平台",
-    description: "基于大语言模型的企业级智能问答系统，支持多轮对话、知识库检索、答案溯源等功能",
+    title: "美团C端智能体 - 小美",
+    description: "参与美团C端智能体小美的Central Agent能力架构设计与核心功能开发，聚焦工具链建设、RAG系统优化及智能体交互体验提升",
     highlights: [
-      "采用 React + TypeScript 技术栈，组件化开发",
-      "实现流式输出效果，提升用户体验",
-      "支持 Markdown 渲染和代码高亮",
-      "实现虚拟列表优化长对话性能",
+      "外卖/闪购场景下的用户地址选择模块：通过新增指代地址转具体地址Tool，对接美团地址中台，构建地址标签映射将模糊意图转化为标准地址坐标",
+      "从0到1搭建订单搜索Agent：设计实时在线、全量离线双链路数据同步架构，构建高效的订单RAG检索基座",
+      "多级重试与规则过滤兜底策略：针对模型幻觉或检索真空期设计容错机制，推动订单搜工具可用一分率从基线跃升至95%",
+      "多Agent角色与小美营销工程实现：新增Agent角色配置，构建独立的Agent对话场域，实现基于配置系统的角色动态切换和不同角色Prompt、记忆隔离",
     ],
-    tech: ["React", "TypeScript", "Redux", "Ant Design", "OpenAI API"],
-    image: "/projects/ai-qa.png",
-    github: "#",
+    tech: ["React", "TypeScript", "Prompt Engineering", "RAG", "Agent设计"],
     demo: "#",
     featured: true,
   },
   {
-    title: "数据可视化平台",
-    description: "企业级数据可视化平台，支持拖拽式图表配置、实时数据更新、多维度数据分析",
+    title: "Hidream.ai 内容社区平台",
+    description: "基于DDD领域驱动设计的微服务化内容社区平台，承接上游模型生产内容，负责内容完整生命周期管理和百万级用户的社交互动场景",
     highlights: [
-      "支持 20+ 种图表类型，包括 3D 可视化",
-      "实现图表配置持久化与分享",
-      "大数据量场景下性能优化",
-      "自定义图表主题和样式",
+      "参与设计和优化社区系统中的核心关系表，支撑用户互动、内容关联等多种社交场景，支持正反向查询和核心关系表缓存化，接口响应时长优化到50ms",
+      "设计并实现了基于消息队列的社区通知系统，支持点赞、评论、关注等多种社交互动通知",
+      "采用工厂模式和策略模式设计通知处理器，实现了不同通知类型的统一管理",
     ],
-    tech: ["Vue 3", "ECharts", "Pinia", "Element Plus", "WebSocket"],
-    image: "/projects/dataviz.png",
-    github: "#",
+    tech: ["Java", "Spring Boot", "MySQL", "Redis", "Kafka", "DDD"],
     demo: "#",
     featured: true,
   },
   {
-    title: "前端组件库",
-    description: "基于 React 的企业级 UI 组件库，提供 50+ 高质量组件",
+    title: "团购到家",
+    description: "完整的电商团购系统，支持微信扫码登录、支付宝支付、订单超时取消、秒杀等高并发场景",
     highlights: [
-      "完整的 TypeScript 类型支持",
-      "支持主题定制和国际化",
-      "完善的文档和单元测试",
+      "支持微信扫码进行登录鉴权，集成支付宝沙箱支付系统，通过异步通知与主动查询双机制保障支付状态一致性",
+      "采用分片扫描 + 延迟消息触发超时查询 + 异步队列缓冲的优化方案，实现超时取消订单业务和主动查询功能",
+      "基于乐观锁保障普通订单并发安全，通过Redis分布式锁实现限购业务控制，结合缓存预热与消息队列支撑秒杀场景高并发处理",
     ],
-    tech: ["React", "TypeScript", "Storybook", "Jest"],
-    github: "#",
-    featured: false,
-  },
-  {
-    title: "低代码表单生成器",
-    description: "可视化表单配置工具，支持拖拽生成复杂表单",
-    highlights: [
-      "JSON Schema 驱动",
-      "支持自定义组件扩展",
-      "表单联动和校验规则配置",
-    ],
-    tech: ["React", "Formily", "DnD Kit"],
-    github: "#",
+    tech: ["Java", "Spring Boot", "Redis", "RocketMQ", "MySQL", "微信支付", "支付宝"],
+    demo: "#",
     featured: false,
   },
 ];
@@ -78,7 +61,7 @@ export default function Projects() {
           <h2 className="text-4xl font-bold mb-4">
             <span className="gradient-text">项目经历</span>
           </h2>
-          <p className="text-gray-400">从 0 到 1 构建有价值的产品</p>
+          <p className="text-gray-400">企业级项目实战与技术落地</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -94,7 +77,7 @@ export default function Projects() {
               whileHover={{ y: -5 }}
             >
               <div className={`p-6 ${project.featured ? "md:flex" : ""}`}>
-                <div className={project.featured ? "md:w-2/3 md:pr-6" : ""}>
+                <div className={project.featured ? "md:w-full" : ""}>
                   <div className="flex items-center gap-2 mb-3">
                     <h3 className="text-xl font-bold">{project.title}</h3>
                     {project.featured && (
@@ -127,26 +110,17 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex gap-3">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        className="flex items-center gap-1 text-sm text-gray-400 hover:text-white transition-colors"
-                      >
-                        <Github size={16} />
-                        <span>源码</span>
-                      </a>
-                    )}
-                    {project.demo && (
+                  {project.demo && (
+                    <div className="flex gap-3">
                       <a
                         href={project.demo}
                         className="flex items-center gap-1 text-sm text-gray-400 hover:text-indigo-400 transition-colors"
                       >
                         <ExternalLink size={16} />
-                        <span>演示</span>
+                        <span>了解更多</span>
                       </a>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

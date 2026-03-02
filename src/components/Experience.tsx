@@ -7,32 +7,33 @@ import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 const experiences = [
   {
-    company: "百分点科技",
-    role: "前端开发工程师",
-    period: "2021.07 - 至今",
+    company: "美团",
+    role: "Agent开发工程师",
+    period: "2025.08 - 至今",
     location: "北京",
-    description: "负责 AI 智能问答平台和数据可视化平台的前端开发工作",
+    description: "参与美团C端智能体"小美"的 Central Agent能力构建设计与核心功能开发，聚焦工具链建设、RAG系统优化及智能体交互体验提升",
     achievements: [
-      "主导 AI 智能问答平台前端架构设计，使用 React + TypeScript 构建可扩展的前端系统",
-      "开发可配置化数据可视化平台，支持 20+ 种图表类型，提升数据展示效率 40%",
-      "优化首屏加载速度，从 4s 优化至 1.5s，提升用户体验",
-      "建立前端监控体系，主动发现并解决问题，线上故障率降低 60%",
-      "推动团队技术规范建设，编写技术文档和最佳实践指南",
+      "外卖/闪购场景下的用户地址选择模块：通过新增"指代地址转具体地址"Tool，对接美团地址中台，将模糊意图转化为标准地址坐标",
+      "从0到1搭建订单搜索Agent：设计实时在线、全量离线双链路数据同步架构，构建高效的订单RAG检索基座",
+      "订单搜工具的可用一分率从基线跃升至95%，设计了多级重试与规则过滤兜底策略",
+      "多Agent角色与小美营销工程实现：新增Agent角色配置，实现基于配置系统的角色动态切换和不同角色Prompt、记忆隔离",
+      "设计红包领取的逻辑状态机，处理"发放-领取-核销"全流程，参与全链路压测",
     ],
-    tech: ["React", "TypeScript", "ECharts", "Ant Design", "Redux"],
+    tech: ["Prompt Engineering", "RAG", "Agent", "LLM", "高并发系统"],
   },
   {
-    company: "某互联网公司",
-    role: "前端开发工程师",
-    period: "2019.07 - 2021.06",
-    location: "北京",
-    description: "负责公司核心业务系统的前端开发",
+    company: "Hidream.ai",
+    role: "后端开发工程师",
+    period: "2025.06 - 2025.08",
+    location: "远程",
+    description: "基于DDD领域驱动设计的微服务化内容社区平台，承接上游模型生产内容，负责内容完整生命周期管理和百万级用户的社交互动场景",
     achievements: [
-      "开发并维护企业级管理系统，服务 500+ 内部用户",
-      "封装通用组件库，提升团队开发效率 30%",
-      "参与前端性能优化，页面加载速度提升 50%",
+      "参与设计和优化社区系统中的核心关系表，支撑用户互动、内容关联等多种社交场景",
+      "支持正反向查询和核心关系表缓存化，接口响应时长优化到50ms",
+      "设计并实现了基于消息队列的社区通知系统，支持点赞、评论、关注等多种社交互动通知",
+      "采用工厂模式和策略模式设计通知处理器，实现了不同通知类型的统一管理",
     ],
-    tech: ["Vue.js", "Element UI", "JavaScript", "Webpack"],
+    tech: ["DDD", "微服务", "消息队列", "Redis", "PostgreSQL"],
   },
 ];
 
@@ -50,9 +51,9 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold mb-4">
-            <span className="gradient-text">工作经历</span>
+            <span className="gradient-text">实习经历</span>
           </h2>
-          <p className="text-gray-400">持续学习，不断成长</p>
+          <p className="text-gray-400">在一线互联网公司积累实战经验</p>
         </motion.div>
 
         <div className="relative">
