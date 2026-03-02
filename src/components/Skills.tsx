@@ -68,10 +68,16 @@ export default function Skills() {
                   alignItems: "center",
                 }}
               >
-                {/* Left: small label */}
+                {/* Left: serif label */}
                 <span
-                  className="text-label"
-                  style={{ color: "var(--color-ink-faint)" }}
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontSize: "clamp(0.8125rem, 1.1vw, 0.9375rem)",
+                    fontWeight: 400,
+                    color: "var(--color-ink-muted)",
+                    letterSpacing: "0.01em",
+                    lineHeight: 1.5,
+                  }}
                 >
                   {group.category}
                 </span>
