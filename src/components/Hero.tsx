@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowDown } from "lucide-react";
 
 export default function Hero() {
@@ -12,6 +13,25 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
+        {/* Avatar */}
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg">
+            <Image
+              src="/source/avator.jpeg"
+              alt="陶孟春"
+              width={160}
+              height={160}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
+
         {/* Name */}
         <motion.h1
           className="text-display text-[#1A1A1A] mb-6"
