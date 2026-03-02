@@ -40,7 +40,7 @@ export default function Education() {
           transition={{ duration: 0.5 }}
         >
           <p className="text-label mb-3" style={{ color: "var(--color-accent)" }}>
-            04 — Education
+            03 — Education
           </p>
           <h2 className="text-title" style={{ color: "var(--color-ink)" }}>
             学术背景

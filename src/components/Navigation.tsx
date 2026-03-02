@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { name: "实践经历", href: "#experience" },
-  { name: "代表作品", href: "#projects" },
   { name: "能力图谱", href: "#skills" },
   { name: "学术背景", href: "#education" },
 ];

@@ -10,15 +10,15 @@ const capabilities = [
   },
   {
     category: "后端工程",
-    items: ["Java · Python", "Spring Boot · FastAPI", "微服务 · DDD", "高并发系统设计"],
+    items: ["Java", "Python", "Spring Boot", "微服务架构", "DDD", "高并发系统设计"],
   },
   {
     category: "数据与存储",
-    items: ["MySQL · PostgreSQL", "Redis · MongoDB", "Kafka · Elasticsearch"],
+    items: ["MySQL", "PostgreSQL", "Redis", "MongoDB", "Kafka", "Elasticsearch"],
   },
   {
     category: "工程实践",
-    items: ["AI 辅助开发", "Docker · CI/CD", "系统拆分与治理", "快速原型迭代"],
+    items: ["AI 辅助开发", "Docker", "CI/CD", "系统拆分与治理", "快速原型迭代"],
   },
 ];
 
@@ -42,53 +42,51 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
         >
           <p className="text-label mb-3" style={{ color: "var(--color-accent)" }}>
-            03 — Capabilities
+            02 — Capabilities
           </p>
           <h2 className="text-title" style={{ color: "var(--color-ink)" }}>
             能力图谱
           </h2>
         </motion.div>
 
-        {/* Two-column list: auto left col, fill right col */}
+        {/* Capability rows — mi-chow style */}
         <div>
           {capabilities.map((group, index) => (
             <motion.div
               key={group.category}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "auto 1fr",
-                gap: "clamp(24px, 5vw, 64px)",
-                borderTop: "1px solid var(--color-border)",
-                padding: "clamp(20px, 3vw, 28px) 0",
-                alignItems: "start",
-              }}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
+              transition={{ delay: index * 0.07, duration: 0.45 }}
+              style={{ borderTop: "1px solid var(--color-border)" }}
             >
-              {/* Left: category — width = content width */}
-              <span
-                className="text-label"
+              <div
                 style={{
-                  color: "var(--color-ink-faint)",
-                  whiteSpace: "nowrap",
-                  paddingTop: "2px",
+                  display: "grid",
+                  gridTemplateColumns: "clamp(80px, 18%, 160px) 1fr",
+                  gap: "clamp(20px, 4vw, 56px)",
+                  padding: "clamp(18px, 2.5vw, 26px) 0",
+                  alignItems: "baseline",
                 }}
               >
-                {group.category}
-              </span>
+                {/* Left: category label */}
+                <span
+                  className="text-label"
+                  style={{ color: "var(--color-ink-faint)" }}
+                >
+                  {group.category}
+                </span>
 
-              {/* Right: items wrap freely */}
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="text-body"
-                    style={{ color: "var(--color-ink-muted)" }}
-                  >
-                    {item}
-                  </span>
-                ))}
+                {/* Right: items joined by · */}
+                <p
+                  style={{
+                    color: "var(--color-ink-muted)",
+                    fontSize: "clamp(0.8125rem, 1.2vw, 0.9375rem)",
+                    lineHeight: 1.7,
+                    letterSpacing: "0.01em",
+                  }}
+                >
+                  {group.items.join(" · ")}
+                </p>
               </div>
             </motion.div>
           ))}
