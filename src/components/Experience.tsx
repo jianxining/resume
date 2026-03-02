@@ -46,7 +46,7 @@ export default function Experience() {
       <div className="content-wrap">
         {/* Header */}
         <motion.div
-          className="mb-14"
+          className="mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
@@ -59,90 +59,79 @@ export default function Experience() {
           </h2>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div
-            className="absolute left-0 top-0 bottom-0 w-px hidden md:block"
-            style={{ backgroundColor: "var(--color-border)" }}
-          />
+        {/* Auto-fit grid: 2 columns on wide, 1 on narrow */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "clamp(16px, 2.5vw, 28px)",
+          }}
+        >
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={exp.company}
+              className="rounded-2xl card-pad flex flex-col"
+              style={{
+                backgroundColor: "var(--color-bg-card)",
+                border: "1px solid var(--color-border)",
+              }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.1, duration: 0.55 }}
+            >
+              {/* Accent top line */}
+              <div
+                className="w-8 h-px mb-5"
+                style={{ backgroundColor: "var(--color-accent)" }}
+              />
 
-          <div className="space-y-10">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.company}
-                className="md:pl-10 relative"
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.12, duration: 0.55 }}
-              >
-                {/* Timeline dot */}
-                <div
-                  className="absolute left-0 top-2 w-2 h-2 rounded-full -translate-x-[3px] hidden md:block"
-                  style={{ backgroundColor: "var(--color-accent)" }}
-                />
-
-                {/* Card */}
-                <div
-                  className="rounded-2xl card-pad"
-                  style={{
-                    backgroundColor: "var(--color-bg-card)",
-                    border: "1px solid var(--color-border)",
-                  }}
+              {/* Company + period */}
+              <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                <h3
+                  className="text-xl font-semibold"
+                  style={{ fontFamily: "var(--font-serif)", color: "var(--color-ink)" }}
                 >
-                  {/* Top row */}
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
-                    <h3
-                      className="text-xl font-semibold"
-                      style={{ fontFamily: "var(--font-serif)", color: "var(--color-ink)" }}
-                    >
-                      {exp.company}
-                    </h3>
-                    <span className="text-small">
-                      {exp.period} · {exp.location}
-                    </span>
-                  </div>
+                  {exp.company}
+                </h3>
+                <span className="text-small">{exp.period} · {exp.location}</span>
+              </div>
 
-                  {/* Role */}
-                  <p
-                    className="text-xs mb-5"
-                    style={{ color: "var(--color-accent)", letterSpacing: "0.06em" }}
+              {/* Role */}
+              <p
+                className="text-xs mb-5"
+                style={{ color: "var(--color-accent)", letterSpacing: "0.06em" }}
+              >
+                {exp.role}
+              </p>
+
+              {/* Summary */}
+              <p className="text-body mb-5">{exp.summary}</p>
+
+              {/* Highlights */}
+              <ul className="space-y-2.5 mb-6 flex-1">
+                {exp.highlights.map((h) => (
+                  <li
+                    key={h}
+                    className="flex gap-3 text-sm leading-relaxed"
+                    style={{ color: "var(--color-ink-muted)" }}
                   >
-                    {exp.role}
-                  </p>
+                    <span
+                      className="mt-2 w-1 h-1 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: "var(--color-accent)" }}
+                    />
+                    {h}
+                  </li>
+                ))}
+              </ul>
 
-                  {/* Summary */}
-                  <p className="text-body mb-5">{exp.summary}</p>
-
-                  {/* Highlights */}
-                  <ul className="space-y-2.5 mb-6">
-                    {exp.highlights.map((h) => (
-                      <li
-                        key={h}
-                        className="flex gap-3 text-sm leading-relaxed"
-                        style={{ color: "var(--color-ink-muted)" }}
-                      >
-                        <span
-                          className="mt-2 w-1 h-1 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: "var(--color-accent)" }}
-                        />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tags.map((tag) => (
-                      <span key={tag} className="tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2">
+                {exp.tags.map((tag) => (
+                  <span key={tag} className="tag">{tag}</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

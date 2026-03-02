@@ -30,7 +30,7 @@ export default function Skills() {
     <section
       id="skills"
       className="section"
-      style={{ backgroundColor: "var(--color-bg-soft)" }}
+      style={{ backgroundColor: "var(--color-bg-paper)" }}
       ref={ref}
     >
       <div className="content-wrap">
@@ -49,28 +49,36 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        {/* Two-column capability list */}
-        <div className="space-y-0">
+        {/* Two-column list: auto left col, fill right col */}
+        <div>
           {capabilities.map((group, index) => (
             <motion.div
               key={group.category}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-12 py-7"
-              style={{ borderTop: "1px solid var(--color-border)" }}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "auto 1fr",
+                gap: "clamp(24px, 5vw, 64px)",
+                borderTop: "1px solid var(--color-border)",
+                padding: "clamp(20px, 3vw, 28px) 0",
+                alignItems: "start",
+              }}
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.08, duration: 0.5 }}
             >
-              {/* Left: category */}
-              <div className="sm:w-36 flex-shrink-0">
-                <span
-                  className="text-label"
-                  style={{ color: "var(--color-ink-faint)" }}
-                >
-                  {group.category}
-                </span>
-              </div>
+              {/* Left: category — width = content width */}
+              <span
+                className="text-label"
+                style={{
+                  color: "var(--color-ink-faint)",
+                  whiteSpace: "nowrap",
+                  paddingTop: "2px",
+                }}
+              >
+                {group.category}
+              </span>
 
-              {/* Right: items */}
+              {/* Right: items wrap freely */}
               <div className="flex flex-wrap gap-x-6 gap-y-2">
                 {group.items.map((item) => (
                   <span
@@ -84,8 +92,6 @@ export default function Skills() {
               </div>
             </motion.div>
           ))}
-
-          {/* Bottom border */}
           <div style={{ borderTop: "1px solid var(--color-border)" }} />
         </div>
       </div>
