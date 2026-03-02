@@ -6,7 +6,7 @@ import { useRef } from "react";
 const experiences = [
   {
     company: "美团",
-    role: "Agent 开发工程师 · 到家事业群",
+    role: "Agent 开发工程师 · Beam 部门",
     period: "2025.08 — 至今",
     location: "北京",
     summary: "构建 C 端核心 Agent 能力，覆盖地址理解、订单搜索、智能推送三条链路。",
@@ -120,32 +120,34 @@ export default function Experience() {
               </p>
 
               {/* Highlights */}
-              <ul className="space-y-2.5 mb-6 flex-1">
+              <ul className="space-y-2 mb-6 flex-1">
                 {exp.highlights.map((h) => (
                   <li
                     key={h}
-                    className="flex gap-3 leading-relaxed"
                     style={{
                       fontFamily: "var(--font-serif)",
                       fontSize: "clamp(0.8125rem, 1.1vw, 0.9375rem)",
                       color: "var(--color-ink-muted)",
+                      lineHeight: 1.75,
+                      letterSpacing: "0.01em",
                     }}
                   >
-                    <span
-                      className="mt-2 w-1 h-1 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: "var(--color-accent)" }}
-                    />
                     {h}
                   </li>
                 ))}
               </ul>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {exp.tags.map((tag) => (
-                  <span key={tag} className="tag">{tag}</span>
-                ))}
-              </div>
+              <p
+                style={{
+                  fontSize: "0.6875rem",
+                  letterSpacing: "0.08em",
+                  color: "var(--color-ink-faint)",
+                  lineHeight: 1.6,
+                }}
+              >
+                {exp.tags.join(" / ")}
+              </p>
             </motion.div>
           ))}
         </div>
