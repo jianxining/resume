@@ -43,7 +43,7 @@ export default function Experience() {
       style={{ backgroundColor: "var(--color-bg-soft)" }}
       ref={ref}
     >
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
           className="mb-14"
