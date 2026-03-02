@@ -3,14 +3,15 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-geist-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "陶孟春 | 前端开发工程师",
-  description: "4年前端开发经验，精通 React、TypeScript，专注于构建高性能、可维护的 Web 应用",
-  keywords: ["前端开发", "React", "TypeScript", "Next.js", "Web开发"],
+  title: "陶孟春 | 软件开发工程师",
+  description: "中国科学技术大学硕士在读，专注Agent开发、后端架构与AI应用。美团、Hidream.ai实习经验。",
+  keywords: ["软件开发", "Agent开发", "后端开发", "AI应用", "中科大"],
 };
 
 export default function RootLayout({
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

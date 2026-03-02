@@ -16,7 +16,6 @@ const projects = [
       "多Agent角色与小美营销工程实现：新增Agent角色配置，构建独立的Agent对话场域，实现基于配置系统的角色动态切换和不同角色Prompt、记忆隔离",
     ],
     tech: ["React", "TypeScript", "Prompt Engineering", "RAG", "Agent设计"],
-    demo: "#",
     featured: true,
   },
   {
@@ -28,7 +27,6 @@ const projects = [
       "采用工厂模式和策略模式设计通知处理器，实现了不同通知类型的统一管理",
     ],
     tech: ["Java", "Spring Boot", "MySQL", "Redis", "Kafka", "DDD"],
-    demo: "#",
     featured: true,
   },
   {
@@ -39,8 +37,7 @@ const projects = [
       "采用分片扫描 + 延迟消息触发超时查询 + 异步队列缓冲的优化方案，实现超时取消订单业务和主动查询功能",
       "基于乐观锁保障普通订单并发安全，通过Redis分布式锁实现限购业务控制，结合缓存预热与消息队列支撑秒杀场景高并发处理",
     ],
-    tech: ["Java", "Spring Boot", "Redis", "RocketMQ", "MySQL", "微信支付", "支付宝"],
-    demo: "#",
+    tech: ["Java", "Spring Boot", "Redis", "RocketMQ", "MySQL"],
     featured: false,
   },
 ];
@@ -50,80 +47,65 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-20 px-4" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="gradient-text">项目经历</span>
-          </h2>
-          <p className="text-gray-400">企业级项目实战与技术落地</p>
+          <h2 className="text-title text-[#1A1A1A] mb-3">项目经历</h2>
+          <p className="text-body max-w-2xl">企业级项目实战与技术落地</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="space-y-6 md:space-y-8">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.title}
-              className={`glass rounded-2xl overflow-hidden hover:glow transition-all duration-300 ${
-                project.featured ? "md:col-span-2" : ""
-              }`}
+              className="bg-white rounded-xl border border-black/[0.08] p-5 sm:p-6 md:p-8 transition-all duration-200 hover:border-black/[0.15] hover:shadow-lg hover:shadow-black/[0.04]"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -5 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div className={`p-6 ${project.featured ? "md:flex" : ""}`}>
-                <div className={project.featured ? "md:w-full" : ""}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <h3 className="text-xl font-bold">{project.title}</h3>
-                    {project.featured && (
-                      <span className="px-2 py-0.5 text-xs bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center gap-1">
-                        <Star size={10} />
-                        精选
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="text-gray-400 mb-4">{project.description}</p>
-
-                  <ul className="space-y-2 mb-4">
-                    {project.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
-                        <span className="text-purple-400 mt-0.5">▹</span>
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-1 text-xs bg-gray-800/50 text-gray-300 rounded"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {project.demo && (
-                    <div className="flex gap-3">
-                      <a
-                        href={project.demo}
-                        className="flex items-center gap-1 text-sm text-gray-400 hover:text-indigo-400 transition-colors"
-                      >
-                        <ExternalLink size={16} />
-                        <span>了解更多</span>
-                      </a>
-                    </div>
+              {/* Header */}
+              <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A1A]">{project.title}</h3>
+                  {project.featured && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#C46849]/10 text-[#C46849] rounded-full text-xs font-medium">
+                      <Star size={10} />
+                      精选
+                    </span>
                   )}
                 </div>
               </div>
-            </motion.div>
+
+              {/* Description */}
+              <p className="text-[#6B6B6B] text-sm sm:text-base leading-relaxed mb-5">{project.description}</p>
+
+              {/* Highlights */}
+              <ul className="space-y-2.5 mb-6">
+                {project.highlights.map((h, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-[#1A1A1A]">
+                    <span className="w-1 h-1 rounded-full bg-[#C46849] mt-2 flex-shrink-0"></span>
+                    <span className="leading-relaxed">{h}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Tech Tags */}
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 bg-[#F5F4F2] text-[#6B6B6B] rounded-full text-xs sm:text-sm font-medium"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

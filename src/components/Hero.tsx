@@ -1,121 +1,104 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 relative">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl" />
-      </div>
-
+    <section className="min-h-screen flex items-center justify-center px-6 relative bg-[#FAF9F7]">
       <motion.div
-        className="text-center z-10"
+        className="text-center max-w-3xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <motion.div
-          className="mb-6"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", duration: 0.8 }}
-        >
-          <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 glow">
-            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center text-4xl font-bold">
-              陶
-            </div>
-          </div>
-        </motion.div>
-
+        {/* Name */}
         <motion.h1
-          className="text-5xl md:text-7xl font-bold mb-4"
+          className="text-display text-[#1A1A1A] mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
+          transition={{ delay: 0.1, duration: 0.8 }}
         >
-          <span className="gradient-text">陶孟春</span>
+          陶孟春
         </motion.h1>
 
-        <motion.div
-          className="text-xl md:text-2xl text-gray-400 mb-6"
+        {/* Role */}
+        <motion.p
+          className="text-subtitle text-[#6B6B6B] mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+        >
+          软件开发工程师 · Agent开发 & 后端开发
+        </motion.p>
+
+        {/* Description */}
+        <motion.p
+          className="text-body max-w-xl mx-auto mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          <span className="typing-effect">软件开发工程师</span>
-          <span className="cursor text-indigo-400">|</span>
-        </motion.div>
-
-        <motion.p
-          className="text-lg text-gray-500 max-w-2xl mx-auto mb-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          中国科学技术大学硕士在读 | Agent开发 & 后端开发 | AI辅助开发实践者
+          中国科学技术大学硕士在读，专注于 AI Agent 系统设计与开发，
+          熟练运用 Vibe Coding 进行高效开发
         </motion.p>
 
-        <motion.p
-          className="text-sm text-gray-600 max-w-2xl mx-auto mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-        >
-          2002年1月 · 安徽省合肥市 · 可实习6个月
-        </motion.p>
-
+        {/* Meta info */}
         <motion.div
-          className="flex flex-wrap justify-center gap-6 text-gray-400 mb-8"
+          className="flex flex-wrap justify-center gap-6 text-small mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
         >
-          <a href="mailto:tmengchun@163.com" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
-            <Mail size={18} />
-            <span>tmengchun@163.com</span>
-          </a>
-          <a href="tel:17730113847" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
-            <Phone size={18} />
-            <span>177-3011-3847</span>
-          </a>
           <span className="flex items-center gap-2">
-            <MapPin size={18} />
-            <span>合肥 / 北京</span>
+            <MapPin size={14} />
+            合肥 / 北京
+          </span>
+          <span className="flex items-center gap-2">
+            <Mail size={14} />
+            tmengchun@163.com
+          </span>
+          <span className="flex items-center gap-2">
+            <Phone size={14} />
+            177-3011-3847
           </span>
         </motion.div>
 
+        {/* CTA Buttons */}
         <motion.div
-          className="flex justify-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
+          className="flex flex-col sm:flex-row justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
         >
           <a
             href="#experience"
-            className="px-8 py-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:scale-105"
+            className="btn-primary inline-flex items-center justify-center gap-2"
           >
             查看经历
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 border border-gray-600 rounded-full font-medium hover:border-indigo-400 hover:text-indigo-400 transition-all duration-300"
+            className="btn-secondary inline-flex items-center justify-center gap-2"
           >
             联系我
           </a>
         </motion.div>
       </motion.div>
 
+      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.8 }}
       >
-        <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-indigo-400 rounded-full" />
-        </div>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <ArrowDown size={20} className="text-[#9B9B9B]" />
+        </motion.div>
       </motion.div>
     </section>
   );

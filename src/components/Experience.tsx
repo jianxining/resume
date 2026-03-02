@@ -42,78 +42,72 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-20 px-4" ref={ref}>
+    <section id="experience" className="section bg-[var(--color-bg-secondary)]" ref={ref}>
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="gradient-text">实习经历</span>
-          </h2>
-          <p className="text-gray-400">在一线互联网公司积累实战经验</p>
+          <h2 className="text-title mb-3">实习经历</h2>
+          <p className="text-body max-w-xl mx-auto">在一线互联网公司积累实战经验</p>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 transform md:-translate-x-1/2" />
-
+        <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <motion.div
+            <motion.article
               key={exp.company}
-              className={`relative mb-12 md:w-1/2 ${
-                index % 2 === 0 ? "md:pr-12 md:ml-0" : "md:pl-12 md:ml-auto"
-              }`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
+              className="card p-6 md:p-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.15, duration: 0.5 }}
             >
-              {/* Timeline dot */}
-              <div className="absolute top-0 left-0 md:left-auto md:right-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-1/2 md:translate-x-1/2 mt-1.5 glow" />
-
-              <div className="glass rounded-2xl p-6 hover:glow transition-all duration-300 ml-6 md:ml-0">
-                <div className="flex items-start justify-between mb-4 flex-wrap gap-2">
-                  <div>
-                    <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                    <p className="text-indigo-400 font-medium">{exp.company}</p>
-                  </div>
-                  <div className="text-right text-sm text-gray-400">
-                    <div className="flex items-center gap-1">
-                      <Calendar size={14} />
-                      <span>{exp.period}</span>
-                    </div>
-                    <div className="flex items-center gap-1 mt-1">
-                      <MapPin size={14} />
-                      <span>{exp.location}</span>
-                    </div>
-                  </div>
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-1">
+                    {exp.role}
+                  </h3>
+                  <p className="text-accent font-medium">{exp.company}</p>
                 </div>
-
-                <p className="text-gray-400 mb-4">{exp.description}</p>
-
-                <ul className="space-y-2 mb-4">
-                  {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
-                      <span className="text-indigo-400 mt-1">•</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 text-xs bg-indigo-500/20 text-indigo-300 rounded-full"
-                    >
-                      {t}
-                    </span>
-                  ))}
+                <div className="flex flex-wrap items-center gap-4 text-small">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar size={14} />
+                    {exp.period}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <MapPin size={14} />
+                    {exp.location}
+                  </span>
                 </div>
               </div>
-            </motion.div>
+
+              {/* Description */}
+              <p className="text-body mb-5 leading-relaxed">{exp.description}</p>
+
+              {/* Achievements */}
+              <ul className="space-y-3 mb-6">
+                {exp.achievements.map((achievement, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mt-2 flex-shrink-0" />
+                    <span className="leading-relaxed">{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Tech Tags */}
+              <div className="flex flex-wrap gap-2">
+                {exp.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="tag tag-accent"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

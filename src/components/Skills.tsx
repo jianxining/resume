@@ -5,12 +5,12 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const skills = [
-  { name: "Java/Python", level: 90, color: "from-orange-400 to-red-500" },
-  { name: "微服务架构", level: 85, color: "from-blue-400 to-indigo-500" },
-  { name: "Redis/MySQL", level: 85, color: "from-cyan-400 to-blue-500" },
-  { name: "RAG/Prompt Engineering", level: 80, color: "from-purple-400 to-pink-500" },
-  { name: "React/Vue", level: 75, color: "from-green-400 to-emerald-500" },
-  { name: "AI辅助开发(Vibe Coding)", level: 90, color: "from-indigo-400 to-purple-500" },
+  { name: "Java/Python", level: 90 },
+  { name: "微服务架构", level: 85 },
+  { name: "Redis/MySQL", level: 85 },
+  { name: "RAG/Prompt Engineering", level: 80 },
+  { name: "React/Vue", level: 75 },
+  { name: "AI辅助开发(Vibe Coding)", level: 90 },
 ];
 
 const techStack = [
@@ -29,40 +29,38 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-20 px-4" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#FAF9F7]" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="gradient-text">专业技能</span>
-          </h2>
-          <p className="text-gray-400">全栈开发能力，专注Agent系统与后端架构</p>
+          <h2 className="text-title text-[#1A1A1A] mb-3">专业技能</h2>
+          <p className="text-body max-w-2xl">全栈开发能力，专注Agent系统与后端架构</p>
         </motion.div>
 
         {/* Skill bars */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              className="glass rounded-xl p-4"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="bg-white rounded-xl p-4 md:p-5 border border-black/[0.08]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: index * 0.05, duration: 0.4 }}
             >
               <div className="flex justify-between mb-2">
-                <span className="font-medium">{skill.name}</span>
-                <span className="text-gray-400">{skill.level}%</span>
+                <span className="font-medium text-[#1A1A1A] text-sm md:text-base">{skill.name}</span>
+                <span className="text-[#6B6B6B] text-sm">{skill.level}%</span>
               </div>
-              <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+              <div className="h-2 bg-[#EFEDEA] rounded-full overflow-hidden">
                 <motion.div
-                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
+                  className="h-full bg-[#C46849] rounded-full"
                   initial={{ width: 0 }}
                   animate={isInView ? { width: `${skill.level}%` } : {}}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 1, ease: "easeOut" }}
+                  transition={{ delay: index * 0.05 + 0.2, duration: 0.8, ease: "easeOut" }}
                 />
               </div>
             </motion.div>
@@ -71,26 +69,25 @@ export default function Skills() {
 
         {/* Tech Stack Grid */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.5, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
         >
           {techStack.map((group, index) => (
             <motion.div
               key={group.category}
-              className="glass rounded-xl p-4 hover:glow transition-all duration-300"
+              className="bg-white rounded-xl p-4 md:p-5 border border-black/[0.08] hover:border-black/[0.15] transition-colors"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
+              transition={{ delay: 0.4 + index * 0.05, duration: 0.4 }}
             >
-              <h3 className="text-indigo-400 font-medium mb-3 text-sm">{group.category}</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="text-[#C46849] font-medium mb-3 text-xs md:text-sm uppercase tracking-wide">{group.category}</h3>
+              <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="px-2 py-1 text-xs bg-gray-800/50 rounded-md text-gray-300 hover:bg-indigo-500/20 hover:text-indigo-300 transition-colors cursor-default"
+                    className="px-2.5 py-1 text-xs md:text-sm bg-[#FAF9F7] rounded-md text-[#6B6B6B] hover:bg-[#F5F4F2] transition-colors cursor-default"
                   >
                     {item}
                   </span>
