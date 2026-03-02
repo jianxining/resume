@@ -21,7 +21,7 @@ const experiences = [
     company: "Hidream.ai",
     role: "后端开发工程师",
     period: "2025.06 — 2025.08",
-    location: "远程",
+    location: "合肥",
     summary: "基于 DDD 架构设计内容社区平台微服务，主导核心社交功能落地。",
     highlights: [
       "关系表分库分表方案，查询性能提升 60%",
@@ -105,15 +105,31 @@ export default function Experience() {
               </p>
 
               {/* Summary */}
-              <p className="text-body mb-5">{exp.summary}</p>
+              <p
+                className="mb-5"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontStyle: "italic",
+                  fontSize: "clamp(0.875rem, 1.2vw, 1rem)",
+                  color: "var(--color-ink-muted)",
+                  lineHeight: 1.75,
+                  letterSpacing: "0.01em",
+                }}
+              >
+                {exp.summary}
+              </p>
 
               {/* Highlights */}
               <ul className="space-y-2.5 mb-6 flex-1">
                 {exp.highlights.map((h) => (
                   <li
                     key={h}
-                    className="flex gap-3 text-sm leading-relaxed"
-                    style={{ color: "var(--color-ink-muted)" }}
+                    className="flex gap-3 leading-relaxed"
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontSize: "clamp(0.8125rem, 1.1vw, 0.9375rem)",
+                      color: "var(--color-ink-muted)",
+                    }}
                   >
                     <span
                       className="mt-2 w-1 h-1 rounded-full flex-shrink-0"

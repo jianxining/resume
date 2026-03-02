@@ -18,150 +18,157 @@ export default function Hero() {
 
   return (
     <section
-      className="min-h-screen flex items-center justify-center px-6 relative"
-      style={{ backgroundColor: "var(--color-bg-paper)" }}
+      className="min-h-screen flex items-center justify-center relative"
+      style={{
+        backgroundColor: "var(--color-bg-paper)",
+        padding: "clamp(80px, 12vw, 140px) clamp(20px, 5.5vw, 80px)",
+      }}
     >
+      {/* Inner: flex-wrap — side by side on wide, stacked on narrow */}
       <motion.div
-        className="text-center max-w-2xl mx-auto pt-20 pb-16"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "clamp(32px, 6vw, 80px)",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "min(860px, 100%)",
+          margin: "0 auto",
+        }}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        {/* Avatar */}
+        {/* Avatar — portrait rectangle */}
         <motion.div
-          className="mb-10"
-          initial={{ opacity: 0, scale: 0.85 }}
+          style={{ flex: "0 0 auto" }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div
-            className="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full overflow-hidden"
             style={{
-              border: "3px solid var(--color-border-strong)",
-              boxShadow: "0 4px 24px rgba(100, 70, 40, 0.1)",
+              width: "clamp(110px, 16vw, 180px)",
+              aspectRatio: "3 / 4",
+              borderRadius: "clamp(10px, 1.5vw, 16px)",
+              overflow: "hidden",
+              border: "1px solid var(--color-border-strong)",
+              boxShadow: "0 8px 32px rgba(80, 55, 30, 0.12)",
             }}
           >
             <Image
               src={avatorImg}
               alt="陶孟春"
-              width={144}
-              height={144}
+              width={180}
+              height={240}
               className="w-full h-full object-cover"
-              style={{ filter: "sepia(0.12) contrast(1.02)" }}
+              style={{ filter: "sepia(0.1) contrast(1.04)" }}
               priority
             />
           </div>
         </motion.div>
 
-        {/* Kicker */}
-        <motion.p
-          className="text-label mb-5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          软件工程师 · 中国科学技术大学
-        </motion.p>
-
-        {/* Name */}
-        <motion.h1
-          className="text-display mb-5"
-          style={{ color: "var(--color-ink)" }}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          陶孟春
-        </motion.h1>
-
-        {/* Tagline */}
-        <motion.p
-          className="text-subtitle mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.45, duration: 0.8 }}
-        >
-          用 AI 重塑产品体验的工程师
-        </motion.p>
-
-        {/* Philosophy */}
-        <motion.p
-          className="mb-10 text-sm italic"
+        {/* Text block */}
+        <motion.div
           style={{
-            color: "var(--color-ink-faint)",
-            letterSpacing: "0.03em",
-            fontFamily: "var(--font-serif)",
+            flex: "1 1 clamp(260px, 40vw, 440px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "clamp(10px, 1.6vw, 18px)",
           }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.55, duration: 0.8 }}
+          initial={{ opacity: 0, x: 16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.25, duration: 0.7 }}
         >
-          「工程是骨架，AI 是翅膀，体验是终点。」
-        </motion.p>
+          {/* Kicker */}
+          <p className="text-label" style={{ color: "var(--color-ink-faint)" }}>
+            软件工程 · 中国科学技术大学在读
+          </p>
 
-        {/* Meta info */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-5 mb-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.65, duration: 0.8 }}
-        >
-          <span
-            className="flex items-center gap-1.5 text-small"
-            style={{ color: "var(--color-ink-faint)" }}
-          >
-            <MapPin size={13} />
-            合肥 / 北京
-          </span>
-          <span
-            className="flex items-center gap-1.5 text-small cursor-pointer transition-colors duration-200"
-            style={{ color: "var(--color-ink-faint)" }}
-            title="点击复制邮箱"
-            onClick={() => copyToClipboard("tmengchun@163.com", "邮箱")}
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--color-accent)")}
-            onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-faint)")}
-          >
-            <Mail size={13} />
-            tmengchun@163.com
-          </span>
-          <span
-            className="flex items-center gap-1.5 text-small cursor-pointer transition-colors duration-200"
-            style={{ color: "var(--color-ink-faint)" }}
-            title="点击复制电话"
-            onClick={() => copyToClipboard("17730113847", "电话")}
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--color-accent)")}
-            onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-faint)")}
-          >
-            <Phone size={13} />
-            177-3011-3847
-          </span>
-        </motion.div>
+          {/* Name */}
+          <h1 className="text-display" style={{ color: "var(--color-ink)" }}>
+            陶孟春
+          </h1>
 
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row justify-center gap-3"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.8 }}
-        >
-          <a
-            href="#experience"
-            className="btn-primary inline-flex items-center justify-center"
+          {/* Tagline */}
+          <p
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(0.9375rem, 1.4vw, 1.125rem)",
+              color: "var(--color-ink-muted)",
+              lineHeight: 1.5,
+            }}
           >
-            查看经历
-          </a>
-          <a
-            href="#projects"
-            className="btn-secondary inline-flex items-center justify-center"
+            用 AI 重塑产品体验的工程师
+          </p>
+
+          {/* Philosophy */}
+          <p
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontStyle: "italic",
+              fontSize: "clamp(0.8125rem, 1.1vw, 0.9375rem)",
+              color: "var(--color-ink-faint)",
+              letterSpacing: "0.02em",
+              lineHeight: 1.7,
+            }}
           >
-            代表作品
-          </a>
+            「工程是骨架，AI 是翅膀，体验是终点。」
+          </p>
+
+          {/* Divider */}
+          <div
+            style={{
+              width: "clamp(32px, 5vw, 48px)",
+              height: "1px",
+              backgroundColor: "var(--color-border-strong)",
+            }}
+          />
+
+          {/* Contact info */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "clamp(10px, 2vw, 20px)",
+            }}
+          >
+            <span
+              className="flex items-center gap-1.5 text-small"
+              style={{ color: "var(--color-ink-faint)" }}
+            >
+              <MapPin size={12} />
+              合肥 · 北京
+            </span>
+            <span
+              className="flex items-center gap-1.5 text-small cursor-pointer transition-colors duration-200"
+              style={{ color: "var(--color-ink-faint)" }}
+              title="点击复制邮箱"
+              onClick={() => copyToClipboard("tmengchun@163.com", "邮箱")}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--color-accent)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-faint)")}
+            >
+              <Mail size={12} />
+              tmengchun@163.com
+            </span>
+            <span
+              className="flex items-center gap-1.5 text-small cursor-pointer transition-colors duration-200"
+              style={{ color: "var(--color-ink-faint)" }}
+              title="点击复制电话"
+              onClick={() => copyToClipboard("17730113847", "电话")}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--color-accent)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-faint)")}
+            >
+              <Phone size={12} />
+              177-3011-3847
+            </span>
+          </div>
         </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
@@ -174,7 +181,6 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Copy toast */}
       {toastMsg && <div className="toast">{toastMsg}</div>}
     </section>
   );
