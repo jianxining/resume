@@ -39,33 +39,76 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        {/* Avatar — portrait rectangle */}
+        {/* Avatar — museum frame */}
         <motion.div
-          style={{ flex: "0 0 auto" }}
+          style={{ flex: "0 0 auto", position: "relative" }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
+          {/* Outer frame — thick mat board */}
           <div
             style={{
-              width: "clamp(110px, 16vw, 180px)",
-              aspectRatio: "3 / 4",
-              borderRadius: "clamp(10px, 1.5vw, 16px)",
-              overflow: "hidden",
-              border: "1px solid var(--color-border-strong)",
-              boxShadow: "0 8px 32px rgba(80, 55, 30, 0.12)",
+              padding: "clamp(12px, 2vw, 22px)",
+              background: "linear-gradient(145deg, #f0e8d5 0%, #e8ddc8 40%, #ede3ce 70%, #f2e9d8 100%)",
+              borderRadius: "clamp(4px, 0.6vw, 8px)",
+              boxShadow: [
+                "0 2px 4px rgba(60,40,20,0.08)",
+                "0 8px 24px rgba(60,40,20,0.12)",
+                "0 24px 56px rgba(60,40,20,0.14)",
+                "inset 0 1px 0 rgba(255,255,255,0.6)",
+                "inset 0 -1px 0 rgba(120,90,50,0.15)",
+              ].join(", "),
             }}
           >
-            <Image
-              src={avatorImg}
-              alt="陶孟春"
-              width={180}
-              height={240}
-              className="w-full h-full object-cover"
-              style={{ filter: "sepia(0.1) contrast(1.04)" }}
-              priority
-            />
+            {/* Inner mat — subtle inset shadow */}
+            <div
+              style={{
+                padding: "clamp(6px, 1vw, 10px)",
+                background: "#f7f0e3",
+                borderRadius: "clamp(2px, 0.3vw, 4px)",
+                boxShadow: [
+                  "inset 0 2px 8px rgba(80,55,25,0.18)",
+                  "inset 0 0 0 1px rgba(120,90,50,0.12)",
+                ].join(", "),
+              }}
+            >
+              {/* Photo */}
+              <div
+                style={{
+                  width: "clamp(140px, 20vw, 240px)",
+                  aspectRatio: "3 / 4",
+                  overflow: "hidden",
+                  borderRadius: "1px",
+                  boxShadow: "inset 0 0 0 1px rgba(80,55,25,0.1)",
+                }}
+              >
+                <Image
+                  src={avatorImg}
+                  alt="陶孟春"
+                  width={240}
+                  height={320}
+                  className="w-full h-full object-cover"
+                  style={{ filter: "sepia(0.15) contrast(1.05) brightness(0.98)" }}
+                  priority
+                />
+              </div>
+            </div>
           </div>
+
+          {/* Small label below frame — gallery caption style */}
+          <p
+            style={{
+              marginTop: "clamp(8px, 1.2vw, 12px)",
+              textAlign: "center",
+              fontSize: "0.6rem",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--color-ink-faint)",
+            }}
+          >
+            Tao Mengchun
+          </p>
         </motion.div>
 
         {/* Text block */}
